@@ -18,11 +18,14 @@ public class WalletPage extends PageBase {
 
     @FindBy(xpath = "//button[normalize-space()='No, maybe later']")
     public WebElement NotificationCloseBtn;
+
     @FindBy(xpath = "//button[normalize-space()='Okay, got it!']")
     public WebElement GotItBtn;
+
     public WalletPage(WebDriver driver) {
         super(driver);
     }
+
     public WalletPage clickNotificationCloseBtn() {
         waitForClickable(NotificationCloseBtn);
         click(NotificationCloseBtn);
@@ -30,6 +33,7 @@ public class WalletPage extends PageBase {
         click(GotItBtn);
         return this;
     }
+
     public void gotoWallet() {
         click(walletBtn);
     }

@@ -46,7 +46,6 @@ public class RiseVestE2ETest extends TestBase {
 //        startTest(method.getName(), method.getAnnotation(Test.class).description(), "valid login");
         loginPage.userSignIn(readTestData.setValidEmail(), readTestData.setValidPassword());
 
-
         walletPage.clickNotificationCloseBtn().gotoWallet();
         walletPage.toggleWalletBalance();
         // asserting that the wallet balance is displayed correctly;
@@ -61,16 +60,17 @@ public class RiseVestE2ETest extends TestBase {
         softAssert.assertTrue(driver.getCurrentUrl().contains("/plans"), "User should remain on plans page.");
 
         plansPage.viewPlans();
-        Thread.sleep(5000);
         softAssert.assertTrue(plansPage.isPlanCreated(), "Plans should be visible in the view section.");
-//
-//        // Create a new plan and verify creation
-//        plansPage.createNewPlan(planName, percent, age, currency, income, importanceOption);
-//        //asserting the creation
-//        String createdPlanName = plansPage.getCreatedPlanName();
-//        softAssert.assertEquals(createdPlanName, planName, "The created plan name does not match the generated plan name.");
-//        softAssert.assertTrue(plansPage.isPlanCreated(), "The plan was not created successfully.");
-//
+
+//      Create a new plan and verify creation
+        plansPage.gotoPlans();
+        softAssert.assertTrue(driver.getCurrentUrl().contains("/plans"), "User should remain on plans page.");
+
+        plansPage.createNewPlan(planName, percent, age, currency, income, importanceOption);
+        softAssert.assertTrue(plansPage.VerifyReviewPage("Review"));
+        plansPage.ClickOnCreatePlan();
+        softAssert.assertTrue(plansPage.VerifyCreatedPlanPage("You just created your Build Wealth plan"), "created plan successfully");
+        Thread.sleep(3000);
 
     }
 }

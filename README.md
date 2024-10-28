@@ -1,6 +1,6 @@
-# YouVerify_UI_QA_Accessment
+# Risevest_QA_Accessment
 # UI Test Suite
-This project aims to automate the testing of an e-commerce website using Selenium, Java, and TestNG. The test suite covers functional tests to search a product, add to cart and checkout.
+This project aims to automate the testing of risevest website using Selenium, Java, and TestNG. The test suite covers functional tests to validate login, wallet and creation of plan.
 
 # Project Structure
 The test suite follows a modular structure, with each type of test organized into separate packages:
@@ -12,12 +12,14 @@ src
     │     │   └── PageBase.java
     │     │   └── TestBase.java
     │     ├── pages
-    │     │   └── CartPage.java
-    │     │   └── LandingPage.java
-    │     │   └── ProductPage.java
-    │     │   └── SearchResultsPage.java
+    │     │   └── DashboardPage.java
+    │     │   └── LoginPage.java
+    │     │   └── PlansPage.java
+    │     │   └── WalletPage.java
     │     ├── tests
-    │     │   └── TestCases.java
+    │     │   └── InvalidLoginTest.java
+    │     │   └── RiseVestE2ETest.java
+    │     │   └── ValidLoginTest.java
     │     ├── utils
     │     │   └── ReadTestData.java
     │     │   └── extentReports
@@ -27,12 +29,13 @@ src
     │     │        └── AnnotationTransformer.java
     │     │        └── Retry.java
     │     │        └── TestListener.java
+    │     │   └── ReadTestData.java
 └── AutomationTest.xml
 
 * base: Contains the test and page base setup and teardown logic for the tests.
 * pages: contains classes that represent the web pages of your application.
 * tests: contains tests to validate specific functionalities.
-* utils: Utility classes for reading data from the test data file, listeners and extent report configurations.
+* utils: Utility classes for reading data from the test data file, listeners, extent report configurations and ReadTestData to call.
 
 # Prerequisites
 * Java 8 or higher
@@ -47,6 +50,7 @@ src
 4. Install Dependencies: Run the following command to install dependencies: bash   
     mvn clean install
    
+5. A github yml file to run the test on Github actions pipeline.
 
 # Running the Tests
 You can run the tests using Maven and TestNG.
@@ -55,12 +59,13 @@ You can run the tests using Maven and TestNG.
 2. And run from testng.xml file  
 3. Run Specific Test Suites: To run only a particular type of test, specify the suite file. For example, to run the tests: bash Copy code   mvn clean test -DsuiteXmlFile=/AutomationTest.xml -Dtest=TestCases
    
+4. The test can also be run from the AutomationTest.xml file.
 
 # Test Coverage
 
 Functional Tests
-* Tests specific functionalities of the ecommerce website.
-* Validates search functionality, carting and the ability to checkout.
+* Tests specific functionalities of the Risevest website.
+* Validates Login functionality, wallet and creation of plans.
 
 
 # Tools and Technologies
@@ -80,5 +85,6 @@ Functional Tests
       
 # Test Reporting
 Test reports are generated with aventstack extent report in the reports directory. 
+
 # License
 This project is open-source 
